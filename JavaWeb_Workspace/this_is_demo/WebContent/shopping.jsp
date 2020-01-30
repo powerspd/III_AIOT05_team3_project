@@ -9,25 +9,29 @@
 	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-<div align="center" class="table-users">
+<div class="table-users">
 <div class="header">
-<h1>歡迎光臨Gostgo無人生鮮商店</h1>
-<div></div>
-<h3>
-<a href="AccountServlet"><c:out value="${user.name}"/></a>
-<a href="ServiceServlet">聯繫客服</a>
-<a href="LogoutServlet">登出</a>
-</h3> 
+<div>
+	<div style="width:1200px;height:100px;margin: 0px auto;position: relative;">
+		<a href="###homepage###"><img src="images/Costgo.jpg" width=350px height=100px style="mix-blend-mode: multiply"></a>
+		<div style="position: absolute; bottom: 3px; right: 10px;">
+			<a href="AccountServlet"><c:out value="${user.name}"/></a>
+			<a href="ServiceServlet">聯繫客服  </a>
+			<a href="LogoutServlet">登出</a>
+		</div>
+	</div> 
+</div>
+</div>
 </div>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8">
+		<div class="col-xl-10">
 			<div class="panel panel-info">
 				<div class="panel-heading">
 					<div class="panel-title">
 						<div class="row">
-							<div class="col-xs-6">
-								<h5><span class="glyphicon glyphicon-shopping-cart"></span> 我的購物車 </h5>
+							<div align="center">
+								<h4 ><span class="glyphicon glyphicon-shopping-cart"></span>我的購物車</h4>
 							</div>
 						</div>
 					</div>
@@ -53,20 +57,20 @@
 					<hr>
 					<div class="row">
 						<div class="text-center">
-							<div class="col-xs-3">
-								<button type="button" class="btn btn-default btn-sm btn-block">
-									再刷一次
-								</button>
-							</div>
+							<div class="col-xs-9">
+							<h4 class="text-right">總價 <strong><c:out value="${item.totalPrice}"/></strong></h4>
+						</div>
 						</div>
 					</div>
 				</div>
 				<div class="panel-footer">
-					<div class="row text-center">
-						<div class="col-xs-9">
-							<h4 class="text-right">總價 <strong><c:out value="${item.totalPrice}"/></strong></h4>
+					<div class="row">						
+						<div class="col-md-2 col-md-offset-4">
+							<button type="button" class="btn btn-success btn-block">
+								再刷一次
+							</button>
 						</div>
-						<div class="col-xs-3">
+						<div class="col-md-2">
 							<button type="button" class="btn btn-success btn-block">
 								確認結帳
 							</button>
@@ -80,3 +84,4 @@
       	  
 </body>
 </html>
+
