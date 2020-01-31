@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;UserCounterImage/WebContent/num&apos; to &apos;img&apos;" description="Rename resource &apos;num&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/num" name="img" stamp="1576267808260" updateReferences="true"/>
-</session>
