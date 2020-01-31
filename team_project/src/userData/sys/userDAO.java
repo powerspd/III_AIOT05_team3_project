@@ -7,7 +7,7 @@ import userData.sys.userModel;
 public class userDAO
 {
 	//setting the mysql database connection
-	private String jdbc="jdbc:mysql://localhost:3306/team_userdata?useSSl=false&serverTimezone=CST";										//setting the link address
+	private String jdbc="jdbc:mysql://localhost:3306/team_test?useSSL=false&serverTimezone=CST";										//setting the link address
 	private String jdbcUsername="root";																										//setting the login user
 	private String jdbcPassword="power1234";																								//setting the user password
 	
@@ -37,25 +37,28 @@ public class userDAO
 		 return connection;																													//return a connection function
 	}
 	
+	//create a new client(account) data into database, using the sql "insert" instruction(INSERT_USER) 
 	public void insertUser(userModel user)throws SQLException
 	{
-		try(Connection connection=getConnection(); PreparedStatement preparedStatement=connection.prepareStatement(INSERT_USER))
+		try(Connection connection=getConnection(); PreparedStatement preparedStatement=connection.prepareStatement(INSERT_USER))			//set up the connection and prepare for INSERT command.
 		{
-			preparedStatement.setString(1, user.getUsername());
+		  //INSERT_USER="INSERT INTO users"+" (username, password, email, phonenumber, birthday) "+"(?, ?, ?, ?, ?)"
+			preparedStatement.setString(1, user.getUsername());																				//setting the parameters of INSERT_USER.
 			preparedStatement.setString(2, user.getPassword());
 			preparedStatement.setString(3, user.getEmail());
-			preparedStatement.setInt(4, user.getPhonenumber());
+			preparedStatement.setString(4, user.getPhonenumber());
 			preparedStatement.setDate(5, Date.valueOf(user.getBirthday()));
 			
-			System.out.println(preparedStatement.toString());
-			preparedStatement.executeUpdate();
+			System.out.println(preparedStatement.toString());																				//print out the sql command after setting the parameters.
+			preparedStatement.executeUpdate();																								//execute the statement.
 		}
-		catch (SQLException e)
+		catch (SQLException e)																												//catch the exception may occurs
 		{
 			e.printStackTrace();
 		}
 	}
 	
+	//
 	public userModel selectUser(String name)throws SQLException
 	{
 		userModel user=null;
@@ -71,7 +74,7 @@ public class userDAO
 			{
 				String password=rs.getString("password");
 				String email=rs.getString("email");
-				int phonenumber=rs.getInt("phonenumber");
+				String phonenumber=rs.getString("phonenumber");
 				Date birthday=rs.getDate("Birthday");
 				
 				user=new userModel(name, password, email, phonenumber, birthday.toString());
@@ -110,7 +113,7 @@ public class userDAO
 			preparedStatement.setString(1, user.getUsername());
 			preparedStatement.setString(2, user.getPassword());
 			preparedStatement.setString(3, user.getEmail());
-			preparedStatement.setInt(4, user.getPhonenumber());
+			preparedStatement.setString(4, user.getPhonenumber());
 			preparedStatement.setDate(5, Date.valueOf(user.getBirthday()));
 			preparedStatement.setInt(6, user.getId());
 			System.out.println(preparedStatement.toString());

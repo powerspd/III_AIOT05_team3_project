@@ -6,10 +6,10 @@ public class userModel
 	private String username;
 	private String password;
 	private String email;
-	private int phonenumber;
+	private String phonenumber;
 	private String birthday;
 	
-	public userModel(int id, String username, String password, String email, int phonenumber, String birthday)
+	public userModel(int id, String username, String password, String email, String phonenumber, String birthday)
 	{
 		this.id=id;
 		this.username=username;
@@ -19,7 +19,7 @@ public class userModel
 		this.birthday=birthday;
 	}
 	
-	public userModel(String username, String password, String email, int phonenumber, String birthday)
+	public userModel(String username, String password, String email, String phonenumber, String birthday)
 	{
 		this.username=username;
 		this.password=password;
@@ -68,12 +68,12 @@ public class userModel
 		this.email = email;
 	}
 
-	public int getPhonenumber()
+	public String getPhonenumber()
 	{
 		return phonenumber;
 	}
 
-	public void setPhonenumber(int phonenumber)
+	public void setPhonenumber(String phonenumber)
 	{
 		this.phonenumber = phonenumber;
 	}
