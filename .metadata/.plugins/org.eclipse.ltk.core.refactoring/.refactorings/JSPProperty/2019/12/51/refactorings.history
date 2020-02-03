@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;JSPProperty/WebContent/proess.jsp&apos; to &apos;process.jsp&apos;" description="Rename resource &apos;proess.jsp&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/proess.jsp" name="process.jsp" stamp="1576740772726" updateReferences="true"/>
+</session>

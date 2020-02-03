@@ -9,7 +9,7 @@ public class userDAO
 	//setting the mysql database connection
 	private String jdbc="jdbc:mysql://localhost:3306/team_test?useSSL=false&serverTimezone=CST";										//setting the link address
 	private String jdbcUsername="root";																										//setting the login user
-	private String jdbcPassword="power1234";																								//setting the user password
+	private String jdbcPassword="22523322";																								//setting the user password
 	
 	//setting the myslq format
 	private final String INSERT_USER="INSERT INTO users"+" (username, password, email, phonenumber, birthday) "+"(?, ?, ?, ?, ?)";			//the insert function format of mysql
