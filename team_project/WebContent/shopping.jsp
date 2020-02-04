@@ -2,8 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="userData.sys.userModel" %>
 <%@ page import="userData.sys.userDAO" %>
-<%  userDAO dao=new userDAO();
-    session.setAttribute("user", dao.selectUser("usertest"));%>
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -24,7 +23,7 @@
 			<!-- send user's e-mail address to servlet, then redirect to feedback page --><!-- in discuss -->
 			<!--<a href="feedback.jsp">聯繫客服  </a>-->
 			<!-- delete session and redirect to logout page -->
-			<a href="LogoutServlet">登出</a>
+			<a href="index.jsp">登出</a>
 		</div>
 	</div> 
 </div>
@@ -46,11 +45,11 @@
 				<div class="panel-body">
 					<div class="row">
 						<!-- need to read the pricing.csv to show the price information -->
-						<div class="col-xs-2"><img class="img-responsive" src="/.....path_name...../<c:out value='${item.imno}'/>" />
+						<div class="col-xs-2"><img class="img-responsive" src="/.....path_name...../<c:out value='${item.item}'/>" />
 						</div>
 						<div class="col-xs-4">
 							<!-- need to read the pricing.csv to show the price information -->
-							<h4 class="product-name"><strong><c:out value="${item.name}"/></strong></h4>
+							<h4 class="product-name"><strong><c:out value="${item.price}"/></strong></h4>
 						</div>
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">

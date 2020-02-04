@@ -27,6 +27,12 @@ public class userModel
 		this.phonenumber=phonenumber;
 		this.birthday=birthday;
 	}
+	
+
+	public userModel(String password) {
+		super();
+		this.password = password;
+	}
 
 	public int getId()
 	{

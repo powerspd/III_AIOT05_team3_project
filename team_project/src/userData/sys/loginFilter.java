@@ -1,10 +1,12 @@
 package userData.sys;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -13,7 +15,7 @@ import javax.servlet.annotation.WebFilter;
 import userData.sys.userModel;
 import userData.sys.userDAO;
 
-@WebFilter({ "/loginFilter", "/login" })
+@WebFilter({ "/loginFilter", "/LoginServlet" })
 public class loginFilter implements Filter
 {
 	userDAO dao=new userDAO();
@@ -24,19 +26,24 @@ public class loginFilter implements Filter
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException
 	{
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
 		try
 		{
 			userModel user=dao.selectUser(request.getParameter("name"));
 			if(user!=null)
 			{
-				if(request.getParameter("password")==user.getPassword())
+				if(request.getParameter("password").equals(user.getPassword()));
 				{
+					
 					chain.doFilter(request, response);
 				}
 			}
 			else
 			{
-				System.out.println("login fail");
+				out.print("<body onload=\"alert('±b¸¹±K½X¿ù»~!')\"></body>");
+				request.getRequestDispatcher("index.jsp").include(request, response);
 			}
 		}
 		catch(SQLException e)

@@ -1,6 +1,9 @@
 package preserve.src;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +28,10 @@ public class signUpServlet extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
+		response.setContentType("text/html;charset=utf-8");
+		request.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		
 		System.out.println(request.getParameter("name")+" "+request.getParameter("password"));
 		System.out.println(request.getParameter("email"));
 		System.out.println(request.getParameter("phonenumber"));
@@ -45,7 +52,9 @@ public class signUpServlet extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		response.sendRedirect("actionSuccess.jsp");
+		out.print("<script>alert('註冊成功請重新登入!')</script>");
+		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+		rd.include(request, response);
 		
 	}
 

@@ -11,8 +11,8 @@ public class userDAO
 	private String jdbcUsername="root";																										//setting the login user
 	private String jdbcPassword="22523322";																								//setting the user password
 	
-	//setting the myslq format
-	private final String INSERT_USER="INSERT INTO users"+" (username, password, email, phonenumber, birthday) "+"(?, ?, ?, ?, ?)";			//the insert function format of mysql
+	//setting the mysql format
+	private final String INSERT_USER="INSERT INTO users"+" (username, password, email, phonenumber, birthday) "+" VALUES (?, ?, ?, ?, ?)";			//the insert function format of mysql
 	private final String SELECT_USER_BY_NAME="select username, password, email, phonenumber, birthday from users where username=?";			//the select function format of mysql
 	private final String DELETE_USER="delete from users where id=?";																		// the delete function format of mysql
 	private final String UPDATE_USER="update users set username=?, password=?, email=?, phonenumber=?, birthday=? where id=?";				//the update function format of mysql
@@ -26,7 +26,7 @@ public class userDAO
 		 Connection connection=null;																										//declare a connection object
 		 try
 		 {
-			 Class.forName("com.mysql.jdbc.Driver");																						//search for mysql connection driver
+			 Class.forName("com.mysql.cj.jdbc.Driver");																						//search for mysql connection driver
 			 connection=DriverManager.getConnection(jdbc, jdbcUsername, jdbcPassword);														//make a connection to mysql database
 		 }
 		 catch(Exception e)																													//catch all Exception may occur in the try loop(including ClassNotFoundException and IOException)

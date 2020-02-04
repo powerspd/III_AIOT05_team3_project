@@ -9,14 +9,14 @@ public class test
 	{
 		try 
 		{
-			CsvReader reader=new CsvReader("WebContent/fruits.csv");
+			CsvReader reader=new CsvReader("fruits.csv");
 			reader.readHeaders();
 			while(reader.readRecord())
 			{
 				System.out.println(reader.getCurrentRecord());
 				System.out.println(reader.get("item"));
 				System.out.println(reader.get("unitprice"));
-				System.out.println(reader.get("shelflife"));
+				
 			}
 		}
 		catch(IOException e)
