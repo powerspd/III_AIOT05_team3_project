@@ -34,7 +34,7 @@ public class loginFilter implements Filter
 			userModel user=dao.selectUser(request.getParameter("name"));
 			if(user!=null)
 			{
-				if(request.getParameter("password").equals(user.getPassword()));
+				if(request.getParameter("password")==(user.getPassword()));
 				{
 					
 					chain.doFilter(request, response);

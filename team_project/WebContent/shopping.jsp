@@ -1,8 +1,9 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="userData.sys.userModel" %>
 <%@ page import="userData.sys.userDAO" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -42,20 +43,25 @@
 						</div>
 					</div>
 				</div>
+			
 				<div class="panel-body">
 					<div class="row">
 						<!-- need to read the pricing.csv to show the price information -->
 						<div class="col-xs-2"><img class="img-responsive" src="/.....path_name...../<c:out value='${item.item}'/>" />
 						</div>
+					
 						<div class="col-xs-4">
 							<!-- need to read the pricing.csv to show the price information -->
-							<h4 class="product-name"><strong><c:out value="${item.price}"/></strong></h4>
+					
+							<h4 class="product-name"><strong><c:out value="${info[0]}"/></strong></h4>
 						</div>
+					
 						<div class="col-xs-6">
 							<div class="col-xs-6 text-right">
 								<!-- need to read the pricing.csv to show the price information -->
-								<h6><strong><c:out value="${item.unitPrice}"/> 元 </strong></h6>
+								<h6><strong><c:out value="${info[1]}"/> 元 </strong></h6>
 							</div>
+						
 							<div class="col-xs-2">
 								<!-- using javascript is better? or using servlet to handle? -->
 								<button type="button" class="btn btn-link btn-xs">
@@ -74,17 +80,17 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="panel-footer">
 					<div class="row">						
-						<div class="col-md-2 col-md-offset-4">
+						<div class="col-md-2 col-md-offset-4">		
 							<!-- this function wait until the detecting function finish -->
-							<button type="button" class="btn btn-success btn-block">
-								再刷一次
-							</button>
-						</div>
+							<a href="refresh">刷新</a>
+						</div>	
+				<form action="checkOut.jsp">
 						<div class="col-md-2">
 							<!-- redirect to the checkout page, with several trading options -->
-							<button type="button" class="btn btn-success btn-block">
+							<button type="sumbit" class="btn btn-success btn-block">
 								確認結帳
 							</button>
 						</div>

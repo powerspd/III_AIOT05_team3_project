@@ -1,10 +1,7 @@
 package userData.sys;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 
@@ -14,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
 
 
 /**
@@ -44,8 +39,6 @@ public class LoginServlet extends HttpServlet
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-			
 		
 		request.getRequestDispatcher("shopping.jsp").include(request, response);
 	}

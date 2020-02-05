@@ -1,4 +1,4 @@
-item,unitprice,shelflife
-Apple,70,2020-02-10
-Banana,39,2020-01-25
-Lemon,40,2020-02-20
+item,price
+apple,100
+"banana	",50
+"tomtol	",200
