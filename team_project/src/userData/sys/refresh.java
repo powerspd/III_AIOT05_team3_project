@@ -5,12 +5,26 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.mysql.cj.xdevapi.Result;
+import com.opencsv.exceptions.CsvException;
+import com.sun.mail.imap.protocol.Item;
+
 
 /**
  * Servlet implementation class refresh
@@ -35,22 +49,56 @@ public class refresh extends HttpServlet {
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
-		PrintWriter pw = response.getWriter();
+		
 		
 		userModel user = (userModel) request.getSession().getAttribute("user");
 		String name = user.getUsername();
 		
-		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\User\\Desktop\\fake_data\\"+ name +"\\"+ name +"_results.csv")));
-		String line; 
-		String[] info = null;
-		while ( (line = br.readLine()) != null ) { 
-			info = line.split("	");
-			//pw.println("§Ù™G  :"+ info[0]  +" "+"≠”º∆  :"+ info[1] +" "+  "\n");
-		}
-		pw.println(info[0]);
-		request.getSession().setAttribute("info", info);
+		List<userModel> item=(List<userModel>) Csv(name);
+		request.getSession().setAttribute("item", item);
 		request.getRequestDispatcher("shopping.jsp").include(request, response);
 	}
+		
+	private  List<userModel> Csv(String name) throws IOException {
+		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\User\\Desktop\\fake_data\\"+ name +"\\"+ name +"_results.csv")));
+		BufferedReader data = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\User\\Desktop\\fruits.csv")));
+		String line; 
+		String fruits=null;
+		String fruitsData =null;
+		String number =null;
+		String price =null;
+		String[] info = null;
+		String in = null;
+		String[] inf =null;
+		Dictionary geek = new Hashtable();
+		
+	       while((in = data.readLine()) != null) {
+	    	in = data.readLine();
+			inf = in.split(",");
+	    	geek.put(inf[0], inf[1]);
+	       }
+
+		List<userModel> item = new ArrayList<>();
+				
+				while ((line = br.readLine()) != null ) { 
+					
+					info = line.split("	");
+					fruits = info[0];
+					number = info[1];
+					
+					
+					if (fruits.equals(geek.keys()))
+					price = (String) geek.get(geek.keys());
+					else price = "0";
+					//System.out.println("Ê∞¥ÊûúÂêçÁ®±  :"+ info[0]  +" "+"ÂÄãÊï∏  :"+ info[1] +" "+  "\n");
+					item.add(new userModel(fruits, number, price));
+			}		
+
+				return item;
+			
+	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -5,7 +5,7 @@ function createCaptcha() {
 	//clear the contents of captcha div first 
 	document.getElementById('captcha').innerHTML = "";
 	
-	var charsArray = "0123456789abcdefghijklmnopqrstuvwxyz";
+	var charsArray = "23456789abcdefghjkmnpqrstuvwxyz";
 	var lengthOtp = 4;
 	var captcha = [];
 	

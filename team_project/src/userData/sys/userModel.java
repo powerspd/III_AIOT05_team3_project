@@ -8,7 +8,54 @@ public class userModel
 	private String email;
 	private String phonenumber;
 	private String birthday;
+	private String fruits;
+	private String price;
+	private String number;
 	
+	
+	
+	
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
+	}
+
+	public userModel(String fruits,String number) {
+		super();
+		this.fruits = fruits;
+		this.number = number;
+	}
+
+	public userModel(String fruits, String number ,String price) {
+		super();
+		this.fruits = fruits;
+		this.number = number;
+		this.price = price;
+	}
+
+	public String getFruits() {
+		return fruits;
+	}
+
+	public void setFruits(String fruits) {
+		this.fruits = fruits;
+	}
+
+
+
+	public String getPrice() {
+		return price;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	
+
 	public userModel(int id, String username, String password, String email, String phonenumber, String birthday)
 	{
 		this.id=id;
@@ -93,6 +140,8 @@ public class userModel
 	{
 		this.birthday = birthday;
 	}
+
+	
 	
 	
 }

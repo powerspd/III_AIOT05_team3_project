@@ -43,25 +43,26 @@
 						</div>
 					</div>
 				</div>
-			
-				<div class="panel-body">
-					<div class="row">
-						<!-- need to read the pricing.csv to show the price information -->
-						<div class="col-xs-2"><img class="img-responsive" src="/.....path_name...../<c:out value='${item.item}'/>" />
-						</div>
-					
-						<div class="col-xs-4">
-							<!-- need to read the pricing.csv to show the price information -->
-					
-							<h4 class="product-name"><strong><c:out value="${info[0]}"/></strong></h4>
-						</div>
-					
-						<div class="col-xs-6">
-							<div class="col-xs-6 text-right">
-								<!-- need to read the pricing.csv to show the price information -->
-								<h6><strong><c:out value="${info[1]}"/> 元 </strong></h6>
-							</div>
-						
+			  <table border="1" cellpadding="5">
+            <tr>
+                <th>項目</th>
+                <th></th>
+                <th>個數</th>
+                <th>價錢</th>
+                <!--  <th>Delete</th> -->
+                
+            </tr>
+            
+            <c:forEach var="item" items="${item}">
+                <tr>
+                	<td><img class="img-responsive" src="C:\\Users\\User\\Desktop\\fake_data\\<c:out value="${user.username}"/>\\<c:out value='${item.fruits}'/>_000<c:out value="${item.number}"/>.png" width=150 hight=150 /></td>
+                    <td><c:out value="${item.fruits}"/></td>
+                    <td><c:out value="${item.number}"/></td>
+                    <td><c:out value="${item.price}"/></td>
+                    <!--  <td><a href="/delete"><img src="image/delete.png"></a></td>-->
+                </tr>
+            </c:forEach>
+        </table>
 							<div class="col-xs-2">
 								<!-- using javascript is better? or using servlet to handle? -->
 								<button type="button" class="btn btn-link btn-xs">
@@ -75,7 +76,7 @@
 						<div class="text-center">
 							<div class="col-xs-9">
 							<!-- the same as above, thinking about how to deal with pricing and sum up? -->
-							<h4 class="text-right">總價 <strong><c:out value="${item.totalPrice}"/></strong></h4>
+							<h4 class="text-right"><c:out value=""/>總價 <strong></strong></h4>
 						</div>
 						</div>
 					</div>
