@@ -6,7 +6,10 @@ import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
+
+
 
 public class zzzz {
 
@@ -21,8 +24,13 @@ public class zzzz {
 			info = line.split(",");
 			dictionary.put(info[0], info[1]);
 	}
-
-		System.out.println(dictionary);
+		java.util.Set<String> keySet = dictionary.keySet();
+        Iterator<String> it = keySet.iterator();
+        while(it.hasNext()){
+            String key = (String) it.next();
+            String value = dictionary.get(key);
+		
 
 	}
+}
 }

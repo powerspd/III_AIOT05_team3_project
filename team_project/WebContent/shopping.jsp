@@ -88,7 +88,7 @@
 							<!-- this function wait until the detecting function finish -->
 							<a href="refresh">刷新</a>
 						</div>	
-				<form action="checkOut.jsp">
+				<form action="checkOut">
 						<div class="col-md-2">
 							<!-- redirect to the checkout page, with several trading options -->
 							<button type="sumbit" class="btn btn-success btn-block">
