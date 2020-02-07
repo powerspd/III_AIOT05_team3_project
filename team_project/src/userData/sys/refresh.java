@@ -12,8 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -65,20 +68,19 @@ public class refresh extends HttpServlet {
 		BufferedReader data = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\User\\Desktop\\fruits.csv")));
 		String line; 
 		String fruits=null;
-		String fruitsData =null;
 		String number =null;
 		String price =null;
 		String[] info = null;
 		String in = null;
 		String[] inf =null;
-		Dictionary geek = new Hashtable();
-		
-	       while((in = data.readLine()) != null) {
-	    	in = data.readLine();
+		String key = null;
+		String value = null;
+		Map<String, String> dictionary = new HashMap<String, String>();
+		while ((in = data.readLine()) != null ) { 
 			inf = in.split(",");
-	    	geek.put(inf[0], inf[1]);
-	       }
-
+			dictionary.put(inf[0], inf[1]);
+		}
+		
 		List<userModel> item = new ArrayList<>();
 				
 				while ((line = br.readLine()) != null ) { 
@@ -87,13 +89,23 @@ public class refresh extends HttpServlet {
 					fruits = info[0];
 					number = info[1];
 					
-					
-					if (fruits.equals(geek.keys()))
-					price = (String) geek.get(geek.keys());
-					else price = "0";
-					//System.out.println("水果名稱  :"+ info[0]  +" "+"個數  :"+ info[1] +" "+  "\n");
+					//System.out.print(price);
+					java.util.Set<String> keySet = dictionary.keySet();
+			        Iterator<String> it = keySet.iterator();
+			        while(it.hasNext()){
+			             key = (String) it.next();
+			             
+			             if (fruits.equals(key)) {
+			            	 value = dictionary.get(fruits);
+			            	 //System.out.print(value);
+			             }
+			            else price = "0";
+			        }
+			        price = value;
+			            //System.out.println("水果名稱  :"+ info[0]  +" "+"個數  :"+ info[1] +" "+  "\n");
 					item.add(new userModel(fruits, number, price));
-			}		
+			        
+				}
 
 				return item;
 			

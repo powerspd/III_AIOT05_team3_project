@@ -13,7 +13,7 @@
 </head>
 <body>
 <div class="container"> 
-		<form action="LoginServlet" id="contact" name="contact" method="post" onsubmit="validateCaptcha()">
+		<form action="123LoginServlet" id="contact" name="contact" method="post" onsubmit="validateCaptcha()">
 	        <h3>登入系統</h3>
 	        <fieldset></fieldset>
 		    <fieldset>
