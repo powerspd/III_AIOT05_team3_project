@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
+
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -31,19 +31,17 @@ public class loginFilter implements Filter
 		PrintWriter out = response.getWriter();
 		try
 		{
-			userModel user=dao.selectUser(request.getParameter("name"));
-			if(user!=null)
-			{
-				if(request.getParameter("password")==(user.getPassword()));
-				{
-					
+			userModel user = dao.selectUser(request.getParameter("name"));
+			String password = request.getParameter("password");
+			if(user!=null && user.getPassword().equals(password))
+				
 					chain.doFilter(request, response);
-				}
-			}
+				
+			
 			else
 			{
 				out.print("<body onload=\"alert('±b¸¹±K½X¿ù»~!')\"></body>");
-				request.getRequestDispatcher("index.jsp").include(request, response);
+				request.getRequestDispatcher("login.jsp").include(request, response);
 			}
 		}
 		catch(SQLException e)

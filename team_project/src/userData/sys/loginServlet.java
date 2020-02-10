@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		request.getRequestDispatcher("shopping.jsp").include(request, response);
+		request.getRequestDispatcher("ShoppingCart.jsp").include(request, response);
 	}
 	
 

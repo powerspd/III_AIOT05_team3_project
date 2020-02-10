@@ -1,41 +1,60 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
+<%@ page language="java" contentType="text/html; charset=BIG5"
+    pageEncoding="BIG5"%>
+<!doctype html>
+<html lang="en">
+
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>ç™»å…¥</title>
-	<style type="text/css">
-  		<%@include file="css/form.css" %>
-	</style>
-	<script type="text/javascript">
-		<%@include file="js/simpleCaptcha.js" %>
-	</script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <!-- <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"> -->
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>½Ðµn¤J¨t²Î</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sign-in/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="css/cover.css" rel="stylesheet">
 </head>
-<body>
-<div class="container"> 
-		<form action="123LoginServlet" id="contact" name="contact" method="post" onsubmit="validateCaptcha()">
-	        <h3>ç™»å…¥ç³»çµ±</h3>
-	        <fieldset></fieldset>
-		    <fieldset>
-		      	<input placeholder="å¸³è™Ÿ" type="text" name="name" required />
-		    </fieldset>
-		    <fieldset>
-		      	<input placeholder="å¯†ç¢¼" type="password" name="password" required />
-		    </fieldset>
-		    <div  id="captcha" align="center"></div>
-			<input placeholder="åœ–å½¢é©—è­‰ç¢¼" type="text" id="captchaTextBox" required />
-			<fieldset></fieldset>
-		    <fieldset>
-		      	<button type="submit">ç™»å…¥</button>
-		      	<button type="reset">æ¸…é™¤</button>
-		    </fieldset>
-		    <fieldset>
-		    	<a href="signUp.jsp">è¨»å†Šå¸³è™Ÿ</a>
-		    	<a href="forgot.jsp">å¿˜è¨˜å¯†ç¢¼</a>
-		    </fieldset>
-	    </form>
-	</div>
-	
-	<script>createCaptcha()</script>
+
+<body class="text-center">
+
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <!-- <h3 class="masthead-brand">Gostgo</h3> -->
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="index.jsp">­º­¶</a>
+                    <a class="nav-link" href="#">ÁpÃ´«ÈªA</a>
+                </nav>
+            </div>
+        </header>
+        <main role="main" class="inner cover">
+            <img class="logo" src="images/logo.png" alt="" width="387" height="141">
+            <!-- <h1 class="cover-heading">Welcome to Gostgo!!</h1> -->
+            <p class="lead">Åwªï¶i¤JGostgo´¼¼zÁÊª«¨®¨t²Î</p>
+            <BR>
+            <p class="lead">
+                <a href="login.jsp" class="btn btn-lg btn-secondary">µn¤J</a>
+            </p>
+        </main>
+
+        <footer class="mastfoot mt-auto">
+
+        </footer>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
+
 </html>

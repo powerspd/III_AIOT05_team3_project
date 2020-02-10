@@ -9,8 +9,9 @@ public class userModel
 	private String phonenumber;
 	private String birthday;
 	private String fruits;
-	private String price;
+	private double price;
 	private String number;
+	private double total;
 	
 	
 	
@@ -23,18 +24,19 @@ public class userModel
 		this.number = number;
 	}
 
-	public userModel(String fruits,String number) {
-		super();
-		this.fruits = fruits;
-		this.number = number;
-	}
 
-	public userModel(String fruits, String number ,String price) {
+
+	public userModel(String fruits, String number ,Double price,Double total) {
 		super();
 		this.fruits = fruits;
 		this.number = number;
 		this.price = price;
+		this.total=total;	
 	}
+
+
+
+
 
 	public String getFruits() {
 		return fruits;
@@ -46,11 +48,11 @@ public class userModel
 
 
 
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -139,6 +141,14 @@ public class userModel
 	public void setBirthday(String birthday)
 	{
 		this.birthday = birthday;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 	
