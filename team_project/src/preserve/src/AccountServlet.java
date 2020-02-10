@@ -1,8 +1,7 @@
 package preserve.src;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,23 +25,12 @@ public class AccountServlet extends HttpServlet
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		try
-		{
-//			userModel user=dao.selectUser("usertest");
-			HttpSession session=request.getSession();
-			userModel user=(userModel)session.getAttribute("user");
-			PrintWriter writer=response.getWriter();
-			writer.write(user.getId()+"<br>");
-			writer.write(user.getUsername()+"<br>");
-			writer.write(user.getPassword()+"<br>");
-			writer.write(user.getPhonenumber()+"<br>");
-			writer.write(user.getEmail()+"<br>");
-			writer.write(user.getBirthday()+"<br>");
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
+		
+			request.setCharacterEncoding("utf-8");
+			response.setContentType("text/html;charset=utf-8");
+			userModel user = (userModel) request.getSession().getAttribute("user");
+			request.getRequestDispatcher("Account.jsp").include(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException

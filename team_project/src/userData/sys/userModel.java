@@ -12,7 +12,7 @@ public class userModel
 	private double price;
 	private String number;
 	private double total;
-	
+	private double precision;
 	
 	
 	
@@ -26,12 +26,13 @@ public class userModel
 
 
 
-	public userModel(String fruits, String number ,Double price,Double total) {
+	public userModel(String fruits, String number ,Double price,Double total,double precision) {
 		super();
 		this.fruits = fruits;
 		this.number = number;
 		this.price = price;
 		this.total=total;	
+		this.setPrecision(precision);
 	}
 
 
@@ -143,12 +144,20 @@ public class userModel
 		this.birthday = birthday;
 	}
 
-	public int getTotal() {
+	public double getTotal() {
 		return total;
 	}
 
 	public void setTotal(int total) {
 		this.total = total;
+	}
+
+	public double getPrecision() {
+		return precision;
+	}
+
+	public void setPrecision(double precision) {
+		this.precision = precision;
 	}
 
 	

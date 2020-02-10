@@ -10,6 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
+
 public class csv {
 
 	
@@ -28,6 +30,7 @@ public class csv {
 			String key = null;
 			Double value = 0.0;
 			Double total = 0.0;
+			Double precision = 0.0;
 			Map<String, String> dictionary = new HashMap<String, String>();
 			while ((in = data.readLine()) != null ) { 
 				inf = in.split(",");
@@ -41,7 +44,8 @@ public class csv {
 						info = line.split("	");
 						fruits = info[0];
 						number = info[1];
-						
+						precision = (Double.valueOf(info[2])*100.00);
+						System.out.println(info[2]);
 						//System.out.print(price);
 						java.util.Set<String> keySet = dictionary.keySet();
 				        Iterator<String> it = keySet.iterator();
@@ -49,7 +53,8 @@ public class csv {
 				             key = (String) it.next();
 				             
 				             if (fruits.equals(key)) {
-				            	 value = (double) Integer.parseInt(dictionary.get(fruits));
+				            	 String a= dictionary.get(fruits).toString(); 
+				            	 value = Double.parseDouble(a);
 				            	 //System.out.print(value);
 				             }
 				            else price = 0.0;
@@ -58,7 +63,7 @@ public class csv {
 				       
 				       total += price; 
 				       System.out.println(total);
-						item.add(new userModel(fruits, number, price,total ));
+						item.add(new userModel(fruits, number, price,total,precision));
 				        
 					}
 				br.close();

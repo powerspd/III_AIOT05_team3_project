@@ -6,9 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <!-- <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"> -->
-    <meta name="generator" content="Jekyll v3.8.6">
+
     <title>請登入系統</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.4/examples/sign-in/">
@@ -24,7 +22,7 @@
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
 
-        <header class="masthead mb-auto">
+        <header class="masthead my-5">
             <div class="inner">
                 <!-- <h3 class="masthead-brand">Gostgo</h3> -->
                 <nav class="nav nav-masthead justify-content-center">
@@ -43,9 +41,7 @@
             </p>
         </main>
 
-        <footer class="mastfoot mt-auto">
-
-        </footer>
+       
     </div>
 
 

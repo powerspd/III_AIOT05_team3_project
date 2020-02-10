@@ -5,12 +5,14 @@
 <%@ page import="userData.sys.userDAO" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
-<html lang="en">
+<html lang="utf-8">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+    <meta name="description" content="">
+    <!-- <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"> -->
+    <!-- <meta name="generator" content="Jekyll v3.8.6"> -->
     <title>您的購物車</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js " integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n " crossorigin="anonymous "></script>
@@ -37,9 +39,9 @@
             <div class="inner">
                 <!-- <h3 class="masthead-brand">Gostgo</h3> -->
                 <nav class="nav nav-masthead justify-content-center">
-               <a class="nav-link" href="#"><c:out value="${user.username}"/></a>
+               <a class="nav-link" href="account"><c:out value="${user.username}"/></a>
                     <a class="nav-link" href="#">聯繫客服</a>
-                    <a class="nav-link" href="checkOut">登出</a>
+                    <a class="nav-link" href="loginout">登出</a>
                 </nav>
             </div>
             <br>
@@ -50,63 +52,50 @@
                     <!-- <h2></h2> -->
                     <!-- <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
                 </div>
-				<form action="refresh" method="post">
+				<form action="Updata" method="post">
                 <div class="row">
                     <div class="col-md-12 order-md-2 mb-4">
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="text-light">您的購物車</span>
+                            <span class="text-light">修改帳戶</span>
                             <!-- <span class="badge badge-secondary badge-pill">3</span> -->
                         </h4>
                         
                         <ul class="list-group mb-5">
-                           <c:forEach var="item" items="${item}">
+                    
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
-                               
                                 <div class="text-secondary">
-                                    <img class="img-responsive" src="C:\\Users\\User\\Desktop\\fake_data\\<c:out value="${user.username}"/>\\<c:out value='${item.fruits}'/>_000<c:out value="${item.number}"/>.png" width=150 height=150/>
-                                   </div>
-                                  
-                                  <div class="text-secondary" >
-                   					<c:out value='${item.fruits}'/><br>
-                   					<c:out value='${item.precision}'/>
-                                   </div>
-                                   
+                                    用戶名 :&nbsp;&nbsp;&nbsp;<input type="text" name="name"value="<c:out value='${user.username}' />"/>
+                				</div>
+                                  </li>
+                             <li class="list-group-item d-flex justify-content-between lh-condensed">    
+                                  <div class="text-secondary" type="text">
+                   密碼 :&nbsp;&nbsp;&nbsp;<input type="text" name="password" value="<c:out value='${user.password}' />"/>
+                   					</div>
+                                </li>    
                                     <!-- <small class="text-muted">Brief description</small> -->
+                              <li class="list-group-item d-flex justify-content-between lh-condensed">      
                                     <div class="text-secondary">
-                                <span class="text-muted"><c:out value='${item.price}'/>元</span>
+                            email:&nbsp;&nbsp;&nbsp;<input type="text" name="email"value=" <c:out value='${user.email}' />"/>
                                  </div>
-                            
                             </li>
-                           </c:forEach>  
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">      
+                                    <div class="text-secondary">
+                              電話 :&nbsp;&nbsp;&nbsp;  <input type="text" name="phonenumber" value="<c:out value='${user.phonenumber}' />"/>
+                                 </div>
+                            </li>
+                           <li class="list-group-item d-flex justify-content-between lh-condensed">      
+                                    <div class="text-secondary">
+             出身年月日  :&nbsp;&nbsp;&nbsp;<input type="text" name="birthday" value="<c:out value='${user.birthday}' />"/>
+                                 </div>
+                            </li>
                         
-                            <li class="list-group-item d-flex justify-content-between bg-light">
-                                
-                                <div class="text-success">
-                                    <h6 class="my-0">折價</h6>
-                                    <!-- <small>EXAMPLECODE</small> -->
-                                <span class="text-success">-$0</span>
-                               
-                                </div>
-                            </li>
-                            
-                      <li class="list-group-item d-flex justify-content-between text-secondary">
-                             
-                        <span>總共</span>
-                      <c:forEach items="${item}" var ="item" varStatus="status">
-						<c:if test="${status.last}">
-						<c:out value="${item.total}"/>
-						</c:if>
-					</c:forEach>
-  
-                    </li>
-                      
+                
                 </ul>
 
-         
                    <div>
                         <hr class="mb-5 ">
-                        <button class="btn btn-info btn-lg my-2 " type="submit">刷新購物車</button>
-                        <button onclick="location.href='checkOut.jsp'" class="btn btn-primary btn-lg my-2 " type="button">進行結帳</button>
+                        <button class="btn btn-info btn-lg my-2 " type="submit">確定</button>
+                        <button onclick="location.href='login.jsp'" class="btn btn-primary btn-lg my-2 " type="button">取消</button>
                    </div>
   	</div>
   	 </div>

@@ -2,6 +2,7 @@ package preserve.src;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,32 +11,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import userData.sys.userDAO;
 import userData.sys.userModel;
 
-import java.sql.SQLException;
-
-@WebServlet("/signUp")
-public class signUpServlet extends HttpServlet
-{
+/**
+ * Servlet implementation class Updata
+ */
+@WebServlet("/Updata")
+public class Updata extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private userDAO dao=new userDAO();
-       
-    public signUpServlet()
-    {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public Updata() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		response.setContentType("text/html;charset=utf-8");
 		request.setCharacterEncoding("utf-8");
 		PrintWriter out = response.getWriter();
 		
-		System.out.println(request.getParameter("name")+" "+request.getParameter("password"));
-		System.out.println(request.getParameter("email"));
-		System.out.println(request.getParameter("phonenumber"));
-		System.out.println(request.getParameter("birthday"));
+	
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");
 		String email=request.getParameter("email");
@@ -45,21 +49,26 @@ public class signUpServlet extends HttpServlet
 		
 		try
 		{
-			dao.insertUser(newUser);
+			dao.updateUser(newUser);
 		}
 		catch(SQLException e)
 		{
 			e.printStackTrace();
 		}
 		
-		out.print("<script>alert('註冊成功請重新登入!')</script>");
+		out.print("<script>alert('修改成功請重新登入!')</script>");
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 		rd.include(request, response);
 		
+		
 	}
+	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
