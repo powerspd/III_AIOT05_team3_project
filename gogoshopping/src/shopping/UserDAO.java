@@ -15,6 +15,7 @@ public class UserDAO {
 
 	private static final String SELECT_USER_BY_TOKEN = "select user from users where token=?;";
 	private static final String SELECT_USER_BY_EMAIL = "select user, password from users where email=?;";
+	private static final String DELETE_TOKEN_BY_USER = "update users set='' where user=?;";
 	
 	public UserDAO() {
 	}
@@ -38,18 +39,12 @@ public class UserDAO {
 		
 		UserModel user = null;
 		
-		// Step 1: Establishing a Connection
 		try (Connection connection = getConnection();
-			
-			// Step 2:Create a statement using connection object
 			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_TOKEN)) {
 			
 			preparedStatement.setString(1, token);
-			
-			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
-
-			// Step 4: Process the ResultSet object.
+			
 			while (rs.next()) {
 				user = new UserModel(rs.getString("user"));
 			}
@@ -66,19 +61,13 @@ public class UserDAO {
 	public UserModel selectUserbyEmail(String email) throws IOException {
 		
 		UserModel user = null;
-		
-		// Step 1: Establishing a Connection
+
 		try (Connection connection = getConnection();
-			
-			// Step 2:Create a statement using connection object
 			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_EMAIL)) {
 			
 			preparedStatement.setString(1, email);
-			
-			// Step 3: Execute the query or update query
 			ResultSet rs = preparedStatement.executeQuery();
 
-			// Step 4: Process the ResultSet object.
 			while (rs.next()) {
 				user = new UserModel(rs.getString("user"), rs.getString("password"));
 				
@@ -92,6 +81,18 @@ public class UserDAO {
 		
 	}
 	
+	public void deleteToken(String name) throws IOException {
+		
+		try (Connection connection = getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(DELETE_TOKEN_BY_USER)) {
+
+			preparedStatement.setString(1, name);
+				
+		} catch (SQLException e) {
+			printSQLException(e);
+		}
+		
+	}
 	
 	private void printSQLException(SQLException ex) {
 		

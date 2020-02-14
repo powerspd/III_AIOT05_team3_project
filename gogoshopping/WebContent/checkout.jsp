@@ -18,6 +18,7 @@
     <div class="cover-container h-100 p-3 col-4">
         <header class="masthead my-5">
             <div class="inner">
+            	<img src="logo/logo.png" style="float:left;width:70px;height:70px">
                 <nav class="nav nav-masthead justify-content-center">
                 	<a class="nav-link" href="#"><c:out value="${sessionScope.name}"/></a>
                     <a class="nav-link" href="index.jsp">首頁</a>

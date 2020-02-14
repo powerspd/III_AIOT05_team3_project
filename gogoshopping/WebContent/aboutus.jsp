@@ -18,6 +18,7 @@
     <div class="cover-container h-100 p-3 col-4">
         <header class="masthead my-5">
             <div class="inner">
+            	<img src="logo/logo.png" style="float:left;width:70px;height:70px">
                 <nav class="nav nav-masthead justify-content-center">
                     <a class="nav-link" href="index.jsp">首頁</a>
                     <a class="nav-link" href="aboutus.jsp">關於我們</a>
@@ -40,28 +41,28 @@
           		<div class="col-lg-4">
             		<img class="rounded-circle" src="member/Thomas.png" alt="Generic placeholder image" width="140" height="140">
             		<h2>林保威</h2>
-            		<p>組員</p>
+            		<p>新手爸爸</p>
             		<p><a class="btn btn-secondary" href="#" role="button">查看資料 &raquo;</a></p>
           		</div>
           		
           		<div class="col-lg-4">
             		<img class="rounded-circle" src="member/Handsome.png" alt="Generic placeholder image" width="140" height="140">
             		<h2>林銘賢</h2>
-            		<p>組員</p>
+            		<p>經理</p>
             		<p><a class="btn btn-secondary" href="#" role="button">查看資料 &raquo;</a></p>
           		</div>
           		
           		<div class="col-lg-4">
-            		<img class="rounded-circle" src="member/girl.jpg" alt="Generic placeholder image" width="140" height="140">
+            		<img class="rounded-circle" src="member/boss.jpg" alt="Generic placeholder image" width="140" height="140">
             		<h2>鄧韵叡</h2>
-            		<p>組員</p>
+            		<p>大哥</p>
             		<p><a class="btn btn-secondary" href="#" role="button">查看資料 &raquo;</a></p>
           		</div>
           		
           		<div class="col-lg-4">
             		<img class="rounded-circle" src="member/Mike.png" alt="Generic placeholder image" width="140" height="140">
             		<h2>林孟勳</h2>
-            		<p>組員</p>
+            		<p>國民男友</p>
             		<p><a class="btn btn-secondary" href="#" role="button">查看資料 &raquo;</a></p>
           		</div>
           		       		

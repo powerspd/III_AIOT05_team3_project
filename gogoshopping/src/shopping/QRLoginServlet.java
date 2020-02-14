@@ -36,7 +36,7 @@ public class QRLoginServlet extends HttpServlet {
 		
 		PrintWriter pw = response.getWriter();
 		
-		UserDAO u = new UserDAO();
+		UserDAO userdao = new UserDAO();
 
 		try {			
 			
@@ -48,12 +48,13 @@ public class QRLoginServlet extends HttpServlet {
 			File file = new File(PATH + "QR\\QR.png");
 			String decodedText = decodeQRCode(file);
 			
-			UserModel m = u.selectUserbyToken(decodedText);
-			String name = m.getUser();
+			UserModel model = userdao.selectUserbyToken(decodedText);
+			String name = model.getUser();
 			
 			if (decodedText != null && name != null) {
 				
 				request.getSession().setAttribute("name", name);
+				userdao.deleteToken(name);
 				pw.print("<body onload=\"alert('Login successfully!')\"></body>");
 				request.getRequestDispatcher("shopping.jsp").include(request, response);
 				
