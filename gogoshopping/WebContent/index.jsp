@@ -33,7 +33,7 @@
             <br><br>
             <div align="center">
             	<a href="login.jsp" class="btn btn-lg btn-primary btn-success btn-left">一般登入</a>
-            	<a href="qrlogin.jsp" class="btn btn-lg btn-primary btn-success btn-right">QR code 登入</a>
+            	<a href="QRLoginServlet" class="btn btn-lg btn-primary btn-success btn-right">QR code 登入</a>
             </div>
         </main>
     </div>

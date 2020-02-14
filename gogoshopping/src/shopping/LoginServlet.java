@@ -1,12 +1,7 @@
 package shopping;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private final String USER_PATH = "C:/Users/User/Desktop/";
 
     public LoginServlet() {
         super();
@@ -30,13 +24,12 @@ public class LoginServlet extends HttpServlet {
 		
 		PrintWriter pw = response.getWriter();
 		
-		String name = request.getParameter("name");
+		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		if(login(name, password)) {
+		if (isLogin(email, password)) {
 			
-			createLogin(name);
-			request.getSession().setAttribute("name", name);
+			request.getSession().setAttribute("name", getUser(email));
 			pw.print("<body onload=\"alert('Login successfully!')\"></body>");
 			request.getRequestDispatcher("shopping.jsp").include(request, response);
 			
@@ -51,32 +44,22 @@ public class LoginServlet extends HttpServlet {
 		
 	}
 	
-	private boolean login(String name, String password) throws IOException {
+	private boolean isLogin(String email, String password) throws IOException {
 		
-		if(name != null && name.trim().length() != 0 && password != null)
-			return Files.exists(Paths.get(USER_PATH, name)) && isCorrectPassword(name, password);
-	
+		UserDAO userdao = new UserDAO();
+		UserModel usermodel = userdao.selectUserbyEmail(email);
+		
+		if (usermodel != null) {
+			 String mypassword = usermodel.getPassword();
+			 return password.equals(mypassword);
+		}
+		
 		return false;
 		
 	}
 	
-	private boolean isCorrectPassword(String name, String password) throws IOException {
-		
-		Path profile = Paths.get(USER_PATH, name).resolve("profile.txt");
-		try(BufferedReader br = Files.newBufferedReader(profile)) {
-			String [] data = br.readLine().split("\t");
-			return data[1].equals(password);
-		}
-		
-	}
-	
-	private void createLogin(String name) throws IOException {
-		
-		Path profile = Paths.get(USER_PATH, name).resolve("login.txt");
-		
-		try(BufferedWriter bw = Files.newBufferedWriter(profile)) {
-			bw.write("1");
-		}
+	private String getUser(String email) throws IOException {
+		return (new UserDAO()).selectUserbyEmail(email).getUser();
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

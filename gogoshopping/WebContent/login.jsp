@@ -30,7 +30,7 @@
 	    <form action="LoginServlet" method="post">
 	        <br>
 		    <div class="form-group">
-		      	<input class="form-control" placeholder="帳號" type="text" name="name" required />
+		      	<input class="form-control" placeholder="帳號" type="email" name="email" required />
 		    </div>
 		    <div class="form-group">
 		      	<input class="form-control" placeholder="密碼" type="password" name="password" required />

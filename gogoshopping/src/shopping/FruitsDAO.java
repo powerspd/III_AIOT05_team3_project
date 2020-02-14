@@ -19,15 +19,15 @@ public class FruitsDAO {
 	public FruitsDAO() {		
 	}
 	
-	public List<Fruits> selectFruits() throws IOException {
+	public List<FruitsModel> selectFruits() throws IOException {
 		
-		List<Fruits> fruits = new ArrayList<>();
+		List<FruitsModel> fruits = new ArrayList<>();
 		DecimalFormat fmt = new DecimalFormat("##.0000");
 		JSONParser parser = new JSONParser();
 		
 		try {
   
-		     Object obj = parser.parse(new FileReader("C:\\Users\\User\\Desktop\\jack\\pricing.json"));
+		     Object obj = parser.parse(new FileReader("C:\\Users\\User\\Desktop\\pricing.json"));
 		     JSONObject jsonObject = (JSONObject)obj;
 
 		     InputStreamReader isr = new InputStreamReader(new FileInputStream("C:\\Users\\User\\Desktop\\yolo-object-detection\\output\\jack.csv"));
@@ -42,7 +42,7 @@ public class FruitsDAO {
 			     String prob   = item[2].trim();
 			     Long   price  = (Long)jsonObject.get(name);
 			     
-			     fruits.add(new Fruits(Integer.parseInt(id), name, Double.parseDouble(fmt.format(Double.parseDouble(prob))), (double)price));
+			     fruits.add(new FruitsModel(Integer.parseInt(id), name, Double.parseDouble(fmt.format(Double.parseDouble(prob))), (double)price));
 	
 			 }
 			 

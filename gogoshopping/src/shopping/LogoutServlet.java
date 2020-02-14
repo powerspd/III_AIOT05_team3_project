@@ -1,7 +1,6 @@
 package shopping;
 
 import java.io.*;
-import java.nio.file.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private final String USER_PATH = "C:/Users/User/Desktop";
 
     public LogoutServlet() {
         super();
@@ -31,8 +29,6 @@ public class LogoutServlet extends HttpServlet {
 		if(session != null) {
 			
 			request.getRequestDispatcher("index.jsp").include(request, response);
-			
-			tryLogout((String)session.getAttribute("name"));
 			session.invalidate();
 			pw.print("<html><body onload=\"alert('Logout successfully!')\"></body></html>");	
 			
@@ -46,13 +42,4 @@ public class LogoutServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	private void tryLogout(String name) throws IOException {
-		
-		Path profile = Paths.get(USER_PATH, name).resolve("login.txt");
-		
-		try(BufferedWriter bw = Files.newBufferedWriter(profile)) {
-			bw.write("0");
-		}
-	}
-
 }

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class RefreshServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static final String PATH = "C:\\Users\\User\\Desktop\\yolo-object-detection\\yolo.py";
+	private static final String CODEPATH = "C:\\Users\\User\\Desktop\\yolo-object-detection\\yolo.py";
 	//private static final String PYTHON = "C:\\Python36\\python.exe ";
 	private static final String PYTHON = "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe ";
 	
@@ -42,8 +42,7 @@ public class RefreshServlet extends HttpServlet {
 			String name = (String)session.getAttribute("name");
 			
 			StringBuilder sb = new StringBuilder(PYTHON);
-	        
-	        sb.append(PATH);
+	        sb.append(CODEPATH);
 	        sb.append(" -u " + name);
 	/*
 	        try {
@@ -52,7 +51,7 @@ public class RefreshServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 	*/
-			List<Fruits> selectFruits = fruitsDAO.selectFruits();
+			List<FruitsModel> selectFruits = fruitsDAO.selectFruits();
 			request.setAttribute("selectFruits", selectFruits);
 			request.getRequestDispatcher("shopping.jsp").include(request, response);
 			
