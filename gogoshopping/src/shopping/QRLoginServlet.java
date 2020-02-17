@@ -20,7 +20,7 @@ import com.google.zxing.common.HybridBinarizer;
 public class QRLoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private final String PATH = "C:\\Users\\User\\Desktop\\";
+	private final String QRPATH = "C:\\Users\\User\\Desktop\\yolo-object-detection\\images\\QR.png";
 	private final String CODEPATH = "C:\\Users\\User\\Desktop\\yolo-object-detection\\capture.py";
 	//private static final String PYTHON = "C:\\Python36\\python.exe ";
 	private static final String PYTHON = "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe ";
@@ -45,7 +45,7 @@ public class QRLoginServlet extends HttpServlet {
 	        
 	        Runtime.getRuntime().exec(sb.toString()).waitFor();
 			
-			File file = new File(PATH + "QR\\QR.png");
+			File file = new File(QRPATH);
 			String decodedText = decodeQRCode(file);
 			
 			UserModel model = userdao.selectUserbyToken(decodedText);

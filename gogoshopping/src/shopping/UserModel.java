@@ -6,15 +6,13 @@ public class UserModel {
 	protected String password;
 	protected String email;
 	protected String token;
-	protected Boolean isLogin;
 
-	public UserModel(String user, String password, String email, String token, Boolean isLogin) {
+	public UserModel(String user, String password, String email, String token) {
 		super();
 		this.user = user;
 		this.password = password;
 		this.email = email;
 		this.token = token;
-		this.isLogin = isLogin;
 	}
 	
 	public UserModel(String user) {
@@ -25,6 +23,13 @@ public class UserModel {
 	public UserModel(String user, String password) {
 		super();
 		this.user = user;
+		this.password = password;
+	}
+	
+	public UserModel(String user, String email, String password) {
+		super();
+		this.user = user;
+		this.email = email;
 		this.password = password;
 	}
 
@@ -58,14 +63,6 @@ public class UserModel {
 
 	public void setToken(String token) {
 		this.token = token;
-	}
-
-	public Boolean getIsLogin() {
-		return isLogin;
-	}
-
-	public void setIsLogin(Boolean isLogin) {
-		this.isLogin = isLogin;
 	}
 
 }

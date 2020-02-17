@@ -1,7 +1,6 @@
 package shopping;
 
 import java.io.*;
-import java.nio.file.*;
 import java.util.Properties;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,7 +12,6 @@ import javax.mail.internet.*;
 public class ForgotServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private final String USER_PATH = "C:/Users/User/Desktop";
 
     public ForgotServlet() {
         super();
@@ -27,9 +25,11 @@ public class ForgotServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String name = request.getParameter("name");
-		String [] profile = myData(name);
+		System.out.println(name);
+		UserDAO userdao = new UserDAO();
+		UserModel model = userdao.selectDatabyUser(name);
 		
-		if(profile == null) {
+		if(model == null) {
 			
 			out.println("<html><body onload=\"alert('Account not found!')\"></body></html>");
 			request.getRequestDispatcher("forgot.jsp").include(request, response);
@@ -37,7 +37,7 @@ public class ForgotServlet extends HttpServlet {
 		} else {
 		
 			// Recipient's email ID needs to be mentioned.
-			String to = profile[0];
+			String to = model.getEmail();
 			 
 			// Sender's email ID needs to be mentioned
 			String from = "henrytong911216@gmail.com";
@@ -77,11 +77,11 @@ public class ForgotServlet extends HttpServlet {
 				message.setSubject("Your password");
 				 
 				// Now set the actual message
-				message.setText("Your password is: " + profile[1]);
+				message.setText("Your password is: " + model.getPassword());
 				 
 				// Send message
 				Transport.send(message);					  
-				out.println("<html><body onload=\"alert('Sent message successfully!')\"></body></html>");
+				out.println("<html><body onload=\"alert('Your password is sent to your mailbox!')\"></body></html>");
 				request.getRequestDispatcher("index.jsp").include(request, response);
 				
 			} catch (MessagingException mex) {
@@ -94,20 +94,6 @@ public class ForgotServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
-	}
-	
-	private String [] myData(String name) throws IOException {
-	
-		Path userhome = Paths.get(USER_PATH, name);
-		
-		if(Files.exists(userhome)) {
-			try(BufferedReader br = Files.newBufferedReader(userhome.resolve("profile.txt"))) {
-				return br.readLine().split("\t");
-			}
-		} else {
-			return null;			
-		}
-
 	}
 
 }
