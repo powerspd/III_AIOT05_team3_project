@@ -16,10 +16,12 @@ import org.json.simple.parser.ParseException;
 
 public class FruitsDAO {
 	
+	private static final String HOME = System.getProperty("user.home");
+	
 	public FruitsDAO() {		
 	}
 	
-	public List<FruitsModel> selectFruits() throws IOException {
+	public List<FruitsModel> selectFruits(String user) throws IOException {
 		
 		List<FruitsModel> fruits = new ArrayList<>();
 		DecimalFormat fmt = new DecimalFormat("##.0000");
@@ -27,10 +29,10 @@ public class FruitsDAO {
 		
 		try {
   
-		     Object obj = parser.parse(new FileReader("C:\\Users\\User\\Desktop\\pricing.json"));
+		     Object obj = parser.parse(new FileReader(HOME + "\\Desktop\\pricing.json"));
 		     JSONObject jsonObject = (JSONObject)obj;
 
-		     InputStreamReader isr = new InputStreamReader(new FileInputStream("C:\\Users\\User\\Desktop\\yolo-object-detection\\output\\jack.csv"));
+		     InputStreamReader isr = new InputStreamReader(new FileInputStream(HOME + "\\Desktop\\yolo-object-detection\\output\\" + user + ".csv"));
 			 BufferedReader reader = new BufferedReader(isr);
 			 String line = null;
 			   
