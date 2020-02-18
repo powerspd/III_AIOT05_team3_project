@@ -38,7 +38,8 @@
   		
 	  	<div id="webchat"></div>
 	  	<br><br>
-	  	<a href="#" class="btn btn-lg btn-block btn-primary btn-danger">呼叫現場人員</a>
+	  	<button onclick="location.href='javascript:history.back();'"class="btn btn-primary btn-danger btn-lg btn-left" type="button">取消</button>
+	  	<a href="#" class="btn btn-lg btn-primary btn-success btn-right">呼叫現場人員</a>
 	
 	   <script>   
 		   const styleOptions = {

@@ -21,7 +21,7 @@ public class QRLoginServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private static final String HOME = System.getProperty("user.home");
-	private final String QRPATH = HOME + "\\Desktop\\yolo-object-detection\\images\\QR.png";
+	private final String QRPATH = HOME + "\\Desktop\\yolo-object-detection\\images\\QR.jpg";
 	private final String CODEPATH = HOME + "\\Desktop\\yolo-object-detection\\capture.py";
 	//private static final String PYTHON = "C:\\Python36\\python.exe ";
 	private static final String PYTHON = HOME + "\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe ";

@@ -45,13 +45,13 @@ public class RefreshServlet extends HttpServlet {
 			StringBuilder sb = new StringBuilder(PYTHON);
 	        sb.append(CODEPATH);
 	        sb.append(" -u " + name);
-	/*
+	
 	        try {
 				Runtime.getRuntime().exec(sb.toString()).waitFor();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-	*/
+	
 			List<FruitsModel> selectFruits = fruitsDAO.selectFruits(name);
 			request.setAttribute("selectFruits", selectFruits);
 			request.getRequestDispatcher("shopping.jsp").include(request, response);
