@@ -6,6 +6,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\User\Desktop\III_AIOT05_team3_project\gogoshopping"/>
 			<item value="C:\Users\User\Desktop\jsp-servlet-jdbc-mysql-crud-tutorial-master"/>
 			<item value="C:\Users\User\Desktop\User"/>
 			<item value="C:\Users\User\Desktop\tools\jsp-servlet-jdbc-mysql-crud-tutorial-master"/>
