@@ -39,13 +39,14 @@ public class QRLoginServlet extends HttpServlet {
 		
 		UserDAO userdao = new UserDAO();
 
-		try {			
+		try {
 			
 			StringBuilder sb = new StringBuilder(PYTHON);
 	        sb.append(CODEPATH);
 	        
 	        Runtime.getRuntime().exec(sb.toString()).waitFor();
-			
+			Thread.sleep(3000);
+	        
 			File file = new File(QRPATH);
 			String decodedText = decodeQRCode(file);
 			
