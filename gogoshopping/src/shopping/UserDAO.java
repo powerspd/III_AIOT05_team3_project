@@ -16,7 +16,7 @@ public class UserDAO {
 	private static final String SELECT_USER_BY_TOKEN = "select user from users where token=?;";
 	private static final String SELECT_USER_BY_EMAIL = "select user, password from users where email=?;";
 	private static final String SELECT_DATA_BY_USER  = "select user, email, password from users where user=?;";
-	private static final String DELETE_TOKEN_BY_USER = "update users set='' where user=?;";
+	private static final String DELETE_TOKEN_BY_USER = "update users set token=? where user=?;";
 	
 	public UserDAO() {
 	}
@@ -110,7 +110,9 @@ public class UserDAO {
 		try (Connection connection = getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(DELETE_TOKEN_BY_USER)) {
 
-			preparedStatement.setString(1, name);
+			preparedStatement.setString(1, " ");
+			preparedStatement.setString(2, name);
+			preparedStatement.executeUpdate();
 				
 		} catch (SQLException e) {
 			printSQLException(e);
