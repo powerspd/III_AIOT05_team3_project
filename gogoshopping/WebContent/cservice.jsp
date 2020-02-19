@@ -37,6 +37,9 @@
         </header>
   		
 	  	<div id="webchat"></div>
+	  	<br><br>
+	  	<button onclick="location.href='javascript:history.back();'"class="btn btn-primary btn-danger btn-lg btn-left" type="button">取消</button>
+	  	<a href="#" class="btn btn-lg btn-primary btn-success btn-right">呼叫現場人員</a>
 	
 	   <script>   
 		   const styleOptions = {
@@ -44,8 +47,6 @@
 		       bubbleBackground: 'rgba(255,255,255)',
 		       bubbleFromUserBackground: 'rgba(0,99,177,0.5)',
 		   };
-		   
-		
 		   window.WebChat.renderWebChat({
 		   		directLine: window.WebChat.createDirectLine({
 		   			secret: 'KyBznN2fmoM.dlkE98Sf8X38-K6YE37taMKWZVDPgdV7Meoaai2hogU'
