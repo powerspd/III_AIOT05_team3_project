@@ -50,12 +50,12 @@ public class QRLoginServlet extends HttpServlet {
 			File file = new File(QRPATH);
 			String decodedText = decodeQRCode(file);
 			
+			System.out.println(decodedText);
+			
 			if (decodedText != null) {
 				
 				UserModel model = userdao.selectUserbyToken(decodedText);
 				String name = model.getUser();
-				
-				System.out.println(decodedText);
 				
 				request.getSession().setAttribute("name", name);
 				userdao.deleteToken(name);

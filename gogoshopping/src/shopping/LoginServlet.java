@@ -2,6 +2,9 @@ package shopping;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +52,8 @@ public class LoginServlet extends HttpServlet {
 		UserDAO userdao = new UserDAO();
 		UserModel usermodel = userdao.selectUserbyEmail(email);
 		
+		password = md5(password);
+		
 		if (usermodel != null) {
 			 String mypassword = usermodel.getPassword();
 			 return password.equals(mypassword);
@@ -56,6 +61,31 @@ public class LoginServlet extends HttpServlet {
 		
 		return false;
 		
+	}
+	
+	private String md5(String s) {
+		
+	    try {
+	    	
+	        // Create MD5 Hash
+	        MessageDigest digest = java.security.MessageDigest.getInstance("MD5");
+	        digest.update(s.getBytes());
+	        byte messageDigest[] = digest.digest();
+	 
+	        // Create Hex String
+	        StringBuffer hexString = new StringBuffer();
+	        for(int i=0; i<messageDigest.length; i++) {
+	            hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+	        }
+	        
+	        return hexString.toString();
+	        
+	    } catch (NoSuchAlgorithmException e) {
+	        e.printStackTrace();
+	    }
+	    
+	    return "";
+	    
 	}
 	
 	private String getUser(String email) throws IOException {

@@ -38,9 +38,6 @@
 		    <div class="form-group">
 		      	<button class="btn btn-lg btn-block btn-primary btn-success" name="login" type="submit">登入</button>
 		    </div>
-		    <nav class="nav nav-masthead">
-		    	<a href="forgot.jsp">忘記密碼</a>
-		    </nav>
 	    </form>  
 	    
 	</div>  

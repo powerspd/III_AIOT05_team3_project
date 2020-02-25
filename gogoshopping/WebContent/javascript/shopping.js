@@ -13,7 +13,7 @@ document.onreadystatechange = function () {
 		}
 		
 		document.getElementById("totalprice").innerHTML = total + ' 元';
-		
+		total = 0
 	}
 
 }

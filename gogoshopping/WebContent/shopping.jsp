@@ -21,7 +21,7 @@
             <div class="inner">
             	<img src="logo/logo.png" style="float:left;width:70px;height:70px">
                 <nav class="nav nav-masthead justify-content-center">
-                	<a class="nav-link" href="#"><c:out value="${sessionScope.name}"/></a>
+                	<a class="nav-link active" href="#"><c:out value="${sessionScope.name}"/></a>
                     <a class="nav-link" href="index.jsp">首頁</a>
                     <a class="nav-link" href="aboutus.jsp">關於我們</a>
                     <a class="nav-link" href="cservice.jsp">智慧客服</a>
