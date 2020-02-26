@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `user` varchar(20) NOT NULL,
-  `password` varchar(6) NOT NULL,
+  `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `email` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -41,9 +41,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user`, `password`, `email`, `token`) VALUES
-(1, 'jack', '1234', 'henryyy040606@hotmail.com', '3UcZi0dYlOaRl4HjBqekGcHyszmtlgzo1aiKJlBRXulvkCeAFuQMrNqI6hIwYANJ'),
-(3, 'bob', '1234', 'bob@gmail.com', 'UM0i779DaDoiNszHITXj9WA509oQ6v3TrXJv8xccg6ew9pHLRK2gVQlI8vRINFVb'),
-(4, 'celine', '1234', 'celine@gmail.com', '');
+(1, 'jack', '81dc9bdb52d04dc20036dbd8313ed055', 'henryyy040606@hotmail.com', '3UcZi0dYlOaRl4HjBqekGcHyszmtlgzo1aiKJlBRXulvkCeAFuQMrNqI6hIwYANJ'),
+(3, 'bob', '81dc9bdb52d04dc20036dbd8313ed055', 'bob@gmail.com', 'UM0i779DaDoiNszHITXj9WA509oQ6v3TrXJv8xccg6ew9pHLRK2gVQlI8vRINFVb'),
+(4, 'celine', '81dc9bdb52d04dc20036dbd8313ed055', 'celine@gmail.com', 'JXL0aT1l6Ll0AfOCzsky3reI9MxXROUrefFUb6wy1KbyYcHuTRjSiMDTJU2YT8XC');
 
 --
 -- 已傾印資料表的索引
