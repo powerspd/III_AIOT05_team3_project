@@ -13,6 +13,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script src="javascript/shopping.js"></script>
+	<script src="javascript/toast.js"></script>
 </head>
 
 <body class="text-center">
@@ -28,6 +29,19 @@
                 </nav>
             </div>
         </header>
+			<c:if test="${sessionScope.islogin == 'success'}" >
+		    	<div class="toast mr-auto" role="alert" data-autohide="false">
+	  				<div class="toast-header">
+	    				<strong class="mr-auto">提示</strong>
+	    				<button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+	      					<span aria-hidden="true">&times;</span>
+	    				</button>
+	  				</div>
+	  				<div class="toast-body">
+	    				登入成功！
+	  				</div>
+				</div>
+   			</c:if>
        	<br><br><br><br><br><br><br>
 		<h4 class="d-flex justify-content-between align-items-center mb-3">
 	     	<span>我的購物車</span>

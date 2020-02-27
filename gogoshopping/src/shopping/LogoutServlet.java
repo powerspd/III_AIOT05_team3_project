@@ -28,9 +28,9 @@ public class LogoutServlet extends HttpServlet {
 		
 		if(session != null) {
 			
+			request.getSession().setAttribute("islogin", "logout");
 			request.getRequestDispatcher("index.jsp").include(request, response);
 			session.invalidate();
-			pw.print("<html><body onload=\"alert('Logout successfully!')\"></body></html>");	
 			
 		}
 		

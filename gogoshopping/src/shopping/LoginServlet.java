@@ -31,13 +31,13 @@ public class LoginServlet extends HttpServlet {
 		
 		if (isLogin(email, password)) {
 			
+			request.getSession().setAttribute("islogin", "success");
 			request.getSession().setAttribute("name", getUser(email));
-			pw.print("<body onload=\"alert('Login successfully!')\"></body>");
 			request.getRequestDispatcher("shopping.jsp").include(request, response);
 			
 		} else {
 			
-			pw.print("<body onload=\"alert('Username or password incorrect!')\"></body>");
+			request.getSession().setAttribute("islogin", "incorrect");
 			request.getRequestDispatcher("index.jsp").include(request, response);	
 			
 		}

@@ -41,6 +41,8 @@ public class QRLoginServlet extends HttpServlet {
 
 		try {
 			
+			request.getSession().setAttribute("islogin", "scanning");
+			
 			StringBuilder sb = new StringBuilder(PYTHON);
 	        sb.append(CODEPATH);
 	        
@@ -57,14 +59,14 @@ public class QRLoginServlet extends HttpServlet {
 				UserModel model = userdao.selectUserbyToken(decodedText);
 				String name = model.getUser();
 				
+				request.getSession().setAttribute("islogin", "success");
 				request.getSession().setAttribute("name", name);
 				userdao.deleteToken(name);
-				pw.print("<body onload=\"alert('Login successfully!')\"></body>");
 				request.getRequestDispatcher("shopping.jsp").include(request, response);
 				
 			} else {
 			    
-				pw.print("<body onload=\"alert('No QR Code found in the image! Please try again!')\"></body>");
+				request.getSession().setAttribute("islogin", "noQR");
 				request.getRequestDispatcher("index.jsp").include(request, response);
 				
 			}
@@ -72,7 +74,7 @@ public class QRLoginServlet extends HttpServlet {
         } catch (IOException e) {
         	
         	e.printStackTrace();
-        	pw.print("<body onload=\"alert('Time-out occurs! Please try again!')\"></body>");
+        	request.getSession().setAttribute("islogin", "timeout");
 			request.getRequestDispatcher("index.jsp").include(request, response);
         	
         } catch (InterruptedException e) {
